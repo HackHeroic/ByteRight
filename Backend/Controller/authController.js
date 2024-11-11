@@ -93,12 +93,7 @@ const refresh = asyncHandler(async (req, res) => {
     const cookies = req.cookies;
 
     
-    if (!cookies?.jwt) {
-        return res.status(401).json({ message: 'Unauthorized: No refresh token found' });
-    }
-
-    const refreshToken = cookies.jwt;
-    const secret = process.env.AUTH_TOKEN;
+  
 
 
     jwt.verify(refreshToken, secret, async (err, decoded) => {
